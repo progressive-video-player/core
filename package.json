@@ -1,0 +1,75 @@
+{
+  "name": "core",
+  "version": "1.0.0",
+  "description": "progressive-video-player core",
+  "main": "src/index.js",
+  "scripts": {
+    "lint": "xo --ignore build/**/*",
+    "test": "npm run lint && karma start karma.conf.js",
+    "clean": "rm -fR build",
+    "build": "npm run clean && npm run bundle && npm run minify",
+    "bundle": "npm run bundle-umd && npm run bundle-es",
+    "minify": "npm run minify-umd && npm run minify-es",
+    "bundle-umd": "rollup src/index.js --output.format umd --name PVP --output.file build/player-core.js",
+    "bundle-es": "rollup src/index.js --output.format es --output.file build/player-core.module.js",
+    "minify-umd": "uglifyjs build/player-core.js --source-map \"root='build/player-core.js.map',url='player-core.js.map'\" -c -m -o build/player-core.min.js",
+    "minify-es": "uglifyjs build/player-core.module.js --source-map \"root='build/player-core.module.js.map',url='player-core.module.js.map'\" -c -m -o build/player-core.module.min.js",
+    "prepublish": "npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/re-mix/player-core.git"
+  },
+  "keywords": [
+    "video"
+  ],
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/re-mix/core/issues"
+  },
+  "homepage": "https://github.com/re-mix/core#readme",
+  "dependencies": {},
+  "devDependencies": {
+    "jasmine-core": "^2.8.0",
+    "karma": "^1.7.1",
+    "karma-chrome-launcher": "^2.2.0",
+    "karma-cli": "^1.0.1",
+    "karma-jasmine": "^1.1.0",
+    "karma-rollup-preprocessor": "^5.0.1",
+    "rollup": "^0.50.0",
+    "rollup-plugin-buble": "^0.16.0",
+    "uglify-es": "^3.1.5",
+    "xo": "^0.18.2"
+  },
+  "xo": {
+    "envs": [
+      "browser"
+    ],
+    "esnext": true,
+    "space": true,
+    "overrides": [
+      {
+        "files": "test/**/*.spec.js",
+        "globals": [
+          "it",
+          "describe",
+          "expect",
+          "beforeEach",
+          "jasmine"
+        ]
+      }
+    ],
+    "rules": {
+      "capitalized-comments": 0,
+      "dot-notation": 0,
+      "new-cap": 0,
+      "no-cond-assign": 0,
+      "no-mixed-operators": 0,
+      "no-multi-assign": 0,
+      "import/no-dynamic-require": 0,
+      "unicorn/explicit-length-check": 0,
+      "unicorn/filename-case": 0
+    }
+  }
+}
