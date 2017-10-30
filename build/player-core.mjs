@@ -21,16 +21,11 @@ class Player extends HTMLElement {
 
   connectedCallback() {
     // console.log('==> Player.connectedCallback');
-    const parent = this.parent = this.parentNode;
-    parent.appendChild(this.elem);
+    this.parent = this.parentNode;
   }
 
   disconnectedCallback() {
     // console.log('==> Player.disconnectedCallback');
-    const parent = this.parent;
-    if (parent.contains(this.elem)) {
-      parent.removeChild(this.elem);
-    }
     this.parent = null;
   }
 
@@ -107,70 +102,14 @@ class Player extends HTMLElement {
   }
 }
 
-class SkinPlugin extends HTMLElement {
-  constructor() {
-    // console.log('==> SkinPlugin.constructor');
-    super();
-    this.parent = null;
-  }
-
-  connectedCallback() {
-    // console.log('==> SkinPlugin.connectedCallback');
-    const parent = this.parent = this.parentNode;
-    const container = parent.parentNode;
-    if (container) {
-      this.initSkin(container);
-      parent.registerPlugin('skin', this);
-    }
-  }
-
-  disconnectedCallback() {
-    // console.log('==> SkinPlugin.disconnectedCallback');
-    const parent = this.parent;
-    this.deinitSkin();
-    parent.unregisterPlugin('skin', this);
-    this.parent = null;
-  }
-
-  initSkin(/* container */) {
-    // console.log('==> SkinPlugin.initSkin');
-    // To be implemented in sub class
-  }
-
-  deinitSkin() {
-    // console.log('==> SkinPlugin.deinitSkin');
-    // To be implemented in sub class
-  }
+if (!customElements) {
+  throw new Error('Custom Elements not supported');
 }
 
-class VideoPlugin extends HTMLElement {
-  constructor() {
-    // console.log('==> VideoPlugin.constructor');
-    super();
-    this.parent = null;
-  }
+const name = 'progressive-video-player';
 
-  connectedCallback() {
-    // console.log('==> VideoPlugin.connectedCallback');
-    const parent = this.parent = this.parentNode;
-    parent.registerPlugin('video', this);
-  }
-
-  disconnectedCallback() {
-    // console.log('==> VideoPlugin.disconnectedCallback');
-    this.parent.unregisterPlugin('video', this);
-    this.parent = null;
-  }
-
-  loadVideo(/* videoElement, url */) {
-    // console.log('==> VideoPlugin.loadVideo');
-    // To be implemented in sub class
-  }
-
-  unloadVideo() {
-    // console.log('==> VideoPlugin.unloadVideo');
-    // To be implemented in sub class
-  }
+if (customElements.get(name)) {
+  console.log(`Custom element "${name}" already defined`);
+} else {
+  customElements.define(name, Player);
 }
-
-export { Player, SkinPlugin, VideoPlugin };

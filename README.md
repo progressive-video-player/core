@@ -40,6 +40,9 @@ video.elem.addEventListener('canplay', handler, false);
 
 ## API
 
+### Element Name
+`<progressive-video-player>`
+
 ### Supported Attributes
 | Name       | Value                                                                                |
 | ---------- | ------------------------------------------------------------------------------------ |
@@ -47,9 +50,9 @@ video.elem.addEventListener('canplay', handler, false);
 
 ### Children
 A child must be either of the following elements (`source` and `track` elements will be ignored.)
-* Custom video plugins that inherit from `VideoPlugin`
-* Custom skin plugins that inherit from `SkinPlugin`
-* Custom ad plugins that inherit from `AdPlugin`
+* Custom video plugins, e.g. [`video-plugin-hls`](https://github.com/progressive-video-player/skin-plugin-default)
+* Custom skin plugins, e.g. [`skin-plugin-default`](https://github.com/progressive-video-player/skin-plugin-default)
+* Custom ad plugins, e.g. `ad-plugin-default`
 
 ## Usage (for custom plugin development)
 ### Define a custom skin plugin

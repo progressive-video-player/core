@@ -11,9 +11,9 @@
     "bundle": "npm run bundle-umd && npm run bundle-es",
     "minify": "npm run minify-umd && npm run minify-es",
     "bundle-umd": "rollup src/index.js --output.format umd --name PVP --output.file build/$npm_package_name.js",
-    "bundle-es": "rollup src/index.js --output.format es --output.file build/$npm_package_name.module.js",
+    "bundle-es": "rollup src/index.js --output.format es --output.file build/$npm_package_name.mjs",
     "minify-umd": "uglifyjs build/$npm_package_name.js --source-map \"root='build/$npm_package_name.js.map',url='$npm_package_name.js.map'\" -c -m -o build/$npm_package_name.min.js",
-    "minify-es": "uglifyjs build/$npm_package_name.module.js --source-map \"root='build/$npm_package_name.module.js.map',url='$npm_package_name.module.js.map'\" -c -m -o build/$npm_package_name.module.min.js",
+    "minify-es": "uglifyjs build/$npm_package_name.mjs --source-map \"root='build/$npm_package_name.mjs.map',url='$npm_package_name.mjs.map'\" -c -m -o build/$npm_package_name.min.mjs",
     "prepublish": "npm run build"
   },
   "repository": {
