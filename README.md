@@ -53,33 +53,4 @@ A child must be either of the following elements (`source` and `track` elements 
 * Custom video plugins, e.g. [`video-plugin-hls`](https://github.com/progressive-video-player/skin-plugin-default)
 * Custom skin plugins, e.g. [`skin-plugin-default`](https://github.com/progressive-video-player/skin-plugin-default)
 * Custom ad plugins, e.g. `ad-plugin-default`
-
-## Usage (for custom plugin development)
-### Define a custom skin plugin
-```js
-import {SkinPlugin} from './player-core';
-
-export default class MySkinPlugin extends SkinPlugin {
-  initSkin(container) {
-    // Start drawing player controller
-  }
-
-  deinitSkin() {
-    // Stop drawing player controller
-  }
-}
-```
-### Define a custom video plugin
-```js
-import {VideoPlugin} from './player-core';
-
-export default class MyVideoPlugin extends VideoPlugin {
-  loadVideo(/* videoElement, url */) {
-    // Load video
-  }
-
-  unloadVideo() {
-    // Unload video
-  }
-}
 ```
