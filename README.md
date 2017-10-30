@@ -3,33 +3,35 @@ A custom element that wraps HTMLVideoElement API
 
 ## Usage
 ### Initialization
-```js
-import {Player} from './player-core';
-import HlsPlugin from './video-plugin-hls';
-import DefaultSkinPlugin from './skin-plugin-default';
-import DefaultAdPlugin from './ad-plugin-default';
-
-const customElements = window.customElements;
-customElements.define('my-video', Player);
-customElements.define('hls-plugin', HlsPlugin);
-customElements.define('skin-plugin', DefaultSkinPlugin);
-customElements.define('ad-plugin', DefaultAdPlugin);
+```html
+<!-- Player core -->
+<script type="module" src="player-core.module.js"></script>
+<script nomodule src="player-core.js"></script>
+<!-- Default skin plugin -->
+<script type="module" src="skin-plugin-default.module.js"></script>
+<script nomodule src="skin-plugin-default.js"></script>
+<!-- HLS video plugin -->
+<script type="module" src="video-plugin-hls.module.js"></script>
+<script nomodule src="video-plugin-hls.js"></script>
+<!-- Default ad plugin -->
+<script type="module" src="ad-plugin-default.module.js"></script>
+<script nomodule src="ad-plugin-default.js"></script>
 ```
 
 ### Define elements
 ```html
-<my-video src="https://my-video.com/xxx.m3u8">
-  <hls-plugin></hls-plugin>
-  <skin-plugin default-language="ja"></skin-plugin>
-  <ad-plugin href="https://my-ad.com/vast" ad-break-type="pre-roll"></ad-plugin>
-</my-video>
+<video-player src="https://my-video.com/xxx.m3u8">
+  <video-plugin-hls></video-plugin-hls>
+  <skin-plugin-defalut language="ja"></skin-plugin-default>
+  <ad-plugin-default href="https://my-ad.com/vast" ad-break-type="pre-roll"></ad-plugin-default>
+</video-player>
 ```
 
 ### Property access / event handling
 ```js
-// As my-video does not inherit from HTMLVideoElement,
+// As video-player does not inherit from HTMLVideoElement,
 // any property access (other than `src`) should be done through `elem` property
-const video = document.querySelector('my-video');
+const video = document.querySelector('video-player');
 console.log(`${video.elem.currentTime} / ${video.elem.duration}`);
 video.elem.addEventListener('canplay', handler, false);
 ```
