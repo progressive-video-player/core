@@ -21,16 +21,11 @@ export default class Player extends HTMLElement {
 
   connectedCallback() {
     // console.log('==> Player.connectedCallback');
-    const parent = this.parent = this.parentNode;
-    parent.appendChild(this.elem);
+    this.parent = this.parentNode;
   }
 
   disconnectedCallback() {
     // console.log('==> Player.disconnectedCallback');
-    const parent = this.parent;
-    if (parent.contains(this.elem)) {
-      parent.removeChild(this.elem);
-    }
     this.parent = null;
   }
 
