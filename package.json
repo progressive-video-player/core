@@ -57,6 +57,7 @@
           "describe",
           "expect",
           "beforeEach",
+          "afterEach",
           "jasmine"
         ]
       }

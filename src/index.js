@@ -1,9 +1,13 @@
 import ElementClass from './player';
 
-const name = 'video-player';
+if (!customElements) {
+  throw new Error('Custom Elements not supported');
+}
+
+const name = 'progressive-video-player';
 
 if (customElements.get(name)) {
   console.log(`Custom element "${name}" already defined`);
 } else {
-  window.customElements.define(name, ElementClass);
+  customElements.define(name, ElementClass);
 }
