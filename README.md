@@ -25,7 +25,11 @@ Once the modules are loaded, custom elements are ready to use.
 <progressive-video-player src="https://my-video.com/xxx.m3u8">
   <video-plugin-hls></video-plugin-hls>
   <skin-plugin-defalut language="ja"></skin-plugin-default>
-  <ad-plugin-default href="https://my-ad.com/vast" ad-break-type="pre-roll"></ad-plugin-default>
+  <ad-plugin-default>
+    <ad-break href="https://my-ad.com/vast" position="pre"></ad-break>
+    <ad-break href="https://my-ad.com/vpaid" position="120"></ad-break>
+    <ad-break href="https://my-ad.com/vast" position="post"></ad-break>
+  </ad-plugin-default>
 </progressive-video-player>
 ```
 
