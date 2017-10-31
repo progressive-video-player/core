@@ -37,7 +37,7 @@ Once the modules are loaded, custom elements are ready to use.
 ```js
 // As video-player does not inherit from HTMLVideoElement,
 // any property access (other than `src`) should be done through `elem` property
-const video = document.querySelector('video-player');
+const video = document.querySelector('progressive-video-player');
 console.log(`${video.elem.currentTime} / ${video.elem.duration}`);
 video.elem.addEventListener('canplay', handler, false);
 ```
